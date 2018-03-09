@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PackageManifest Version="2.0.0" xmlns="http://schemas.microsoft.com/developer/vsx-schema/2011" xmlns:d="http://schemas.microsoft.com/developer/vsx-schema-design/2011">
+  <Metadata>
+    <Identity Language="en-US" Id="vscode-liquid-snippets" Version="0.2.7" Publisher="killalau"/>
+    <DisplayName>Shopify Liquid Template Snippets</DisplayName>
+    <Description xml:space="preserve">Shopify Liquid Template snippets</Description>
+    <Tags>snippets,liquid,shopify,snippet</Tags>
+    <Categories>Snippets</Categories>
+    <GalleryFlags>Public</GalleryFlags>
+    <Badges></Badges>
+    <Properties>
+      <Property Id="Microsoft.VisualStudio.Code.Engine" Value="0.10.x" />
+      <Property Id="Microsoft.VisualStudio.Code.ExtensionDependencies" Value="neilding.language-liquid" />
+      
+        <Property Id="Microsoft.VisualStudio.Services.Links.Source" Value="https://github.com/killalau/vscode-liquid-snippets.git" />
+        <Property Id="Microsoft.VisualStudio.Services.Links.Getstarted" Value="https://github.com/killalau/vscode-liquid-snippets.git" />
+        
+          <Property Id="Microsoft.VisualStudio.Services.Links.GitHub" Value="https://github.com/killalau/vscode-liquid-snippets.git" />
+        
+      
+      <Property Id="Microsoft.VisualStudio.Services.Links.Support" Value="https://github.com/killalau/vscode-liquid-snippets/issues" />
+      <Property Id="Microsoft.VisualStudio.Services.Links.Learn" Value="https://github.com/killalau/vscode-liquid-snippets" />
+      <Property Id="Microsoft.VisualStudio.Services.Branding.Color" Value="#30373b" />
+      <Property Id="Microsoft.VisualStudio.Services.Branding.Theme" Value="dark" />
+      <Property Id="Microsoft.VisualStudio.Services.GitHubFlavoredMarkdown" Value="true" />
+      
+      
+    </Properties>
+    <License>extension/LICENSE.txt</License>
+    <Icon>extension/images/shopify-icon.png</Icon>
+  </Metadata>
+  <Installation>
+    <InstallationTarget Id="Microsoft.VisualStudio.Code"/>
+  </Installation>
+  <Dependencies/>
+  <Assets>
+    <Asset Type="Microsoft.VisualStudio.Code.Manifest" Path="extension/package.json" Addressable="true" />
+    <Asset Type="Microsoft.VisualStudio.Services.Content.Details" Path="extension/README.md" Addressable="true" /><Asset Type="Microsoft.VisualStudio.Services.Content.License" Path="extension/LICENSE.txt" Addressable="true" /><Asset Type="Microsoft.VisualStudio.Services.Icons.Default" Path="extension/images/shopify-icon.png" Addressable="true" />
+  </Assets>
+</PackageManifest>

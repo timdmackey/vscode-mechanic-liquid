@@ -1,0 +1,62 @@
+{
+	"name": "vscode-liquid-snippets",
+	"version": "0.2.7",
+	"publisher": "timdmackey",
+	"displayName": "Shopify Liquid Template Snippets",
+	"description": "Shopify Liquid Template snippets",
+	"icon": "images/shopify-icon.png",
+	"galleryBanner": {
+		"color": "#30373b",
+		"theme": "dark"
+	},
+	"engines": {
+		"vscode": "0.10.x"
+	},
+	"categories": [
+		"Snippets"
+	],
+	"keywords": [
+		"snippets",
+		"liquid",
+		"shopify"
+	],
+	"license": "SEE LICENSE IN LICENSE.txt",
+	"homepage": "https://github.com/killalau/vscode-liquid-snippets",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/killalau/vscode-liquid-snippets.git"
+	},
+	"bugs": "https://github.com/killalau/vscode-liquid-snippets/issues",
+	"contributes": {
+		"snippets": [
+			{
+				"language": "liquid",
+				"path": "./snippets/liquid.json"
+			},
+			{
+				"language": "liquid-html",
+				"path": "./snippets/liquid.json"
+			},
+			{
+				"language": "liquid-js",
+				"path": "./snippets/liquid.json"
+			},
+			{
+				"language": "liquid-css",
+				"path": "./snippets/liquid.json"
+			},
+			{
+				"language": "liquid-sass",
+				"path": "./snippets/liquid.json"
+			}
+		]
+	},
+	"extensionDependencies": [
+		"timdmackey.language-liquid"
+	],
+	"__metadata": {
+		"id": "2459f41e-2bde-4c19-a5ae-1ca33b72083a",
+		"publisherId": "5139bf11-ed3b-42bb-9aaf-376ea9c09b1b",
+		"publisherDisplayName": "Tim Mackey"
+	}
+}
