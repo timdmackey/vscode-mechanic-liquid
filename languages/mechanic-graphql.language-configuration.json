@@ -1,0 +1,65 @@
+{
+  "comments": {
+    "lineComment": "#",
+  },
+  // Symbols used as brackets
+  "brackets": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"]
+  ],
+  // Symbols that are auto closed when typing:
+  "autoClosingPairs": [
+    {
+      "open": "{",
+      "close": "}"
+    },
+    {
+      "open": "{ ",
+      "close": " "
+    },
+    {
+      "open": "[",
+      "close": "]"
+    },
+    {
+      "open": "[ ",
+      "close": " "
+    },
+    {
+      "open": "(",
+      "close": ")"
+    },
+    {
+      "open": "( ",
+      "close": " "
+    },
+    {
+      "open": "\"",
+      "close": "\"",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    },
+    {
+      "open": "'",
+      "close": "'",
+      "notIn": [
+        "string",
+        "comment"
+      ]
+    }
+  ],
+  "surroundingPairs": [
+    ["{", "}"],
+    ["[", "]"],
+    ["(", ")"],
+    ["\"", "\""],
+    ["'", "'"],
+    [" ", " "]
+  ],
+  "onEnterRules": [
+
+  ]
+}

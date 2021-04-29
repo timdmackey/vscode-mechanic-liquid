@@ -1,0 +1,767 @@
+{
+  "fileTypes": [
+    "mechanic-liquid"
+  ],
+  "foldingStartMarker": "(?x){%-?\\s*(if|unless|for|paginate|capture|form|case|tablerow|raw|comment|action|error|log)[^(%})]+-?%}",
+  "foldingStopMarker": "(?x){%-?\\s*(endif|endunless|endfor|endpaginate|endcapture|endform|endcase|endtablerow|endraw|endcomment|endaction|enderror|endlog)[^(%})]+-?%}",
+  "name": "Mechanic Liquid",
+  "patterns": [
+    {
+      "include": "#liquid_init"
+    }
+  ],
+  "repository": {
+    "embedded_graphql": {
+      "patterns": [
+        {
+          "match": "(?<={%-?\\s*capture\\s*\\w*\\s*-?%}\\s*\/\/\\<[graphql\\]>)([\\w\\s]*){%-?\\s*endcapture\\s*-?%}",
+          "include": "#graphql_jsonplaceholder_init"
+        }
+      ]
+    },
+    "embedded_json": {
+      "patterns": [
+        {
+          "match": ".*",
+          "name": "meta.embedded.block.json"
+        }
+      ]
+    },
+    "assign_op": {
+      "patterns": [
+        {
+          "match": "/=",
+          "name": "keyword.operator.assignment.augmented.mechanic-liquid"
+        }
+      ]
+    },
+    "logic_expression": {
+      "patterns": [
+        {
+          "match": "/=",
+          "name": "keyword.operator.assignment.augmented.mechanic-liquid"
+        }
+      ]
+    },
+    "logic_op": {
+      "patterns": [
+        {
+          "match": "\\s+(and|or|not|contains|(\\!\\=|\\=\\=|<\\=|>\\=|<|>)\\s+",
+          "name": "keyword.operator.logical.mechanic-liquid"
+        }
+      ]
+    },
+    "liquid_tag_delimiters": {
+      "patterns": [
+        {
+          "begin": "{%",
+          "end": "%}",
+          "name": "punctuation.tag.mechanic-liquid",
+          "patterns": [
+            {
+              "match": "(?<=%)-",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "match": "-(?=%)",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "include": "#liquid_tag_name"
+            },
+            {
+              "include": "#liquid_var"
+            },
+            {
+              "include": "#liquid_js_comments"
+            }
+          ]
+        }
+      ]
+    },
+    "liquid_output_delimiters": {
+      "patterns": [
+        {
+          "begin": "{{",
+          "end": "}}",
+          "name": "punctuation.output.mechanic-liquid",
+          "patterns": [
+            {
+              "match": "(?<={)-",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "match": "-(?=})",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "include": "#liquid_var"
+            },
+            {
+              "include": "#liquid_js_comments"
+            }
+          ]
+        }
+      ]
+    },
+    "liquid_init": {
+      "patterns": [
+        {
+          "include": "#liquid_native_comments"
+        },
+        {
+          "include": "#liquid_js_comments"
+        },
+        {
+          "include": "#liquid_output_delimiters"
+        },
+        {
+          "include": "#liquid_tag_delimiters"
+        },
+        {
+          "include": "#liquid_inside_tag_highlighting"
+        }
+      ]
+    },
+    "liquid_comment_init": {
+      "patterns": [
+        {
+          "include": "#liquid_native_comments"
+        },
+        {
+          "include": "#liquid_js_comments"
+        },
+        {
+          "include": "#liquid_tag_delimiters"
+        },
+        {
+          "include": "#liquid_inside_tag_highlighting"
+        }
+      ]
+    },
+    "liquid_inline_init": {
+      "patterns": [
+        {
+          "begin": "{{",
+          "end": "}}",
+          "name": "inlinecode.mechanic-liquid punctuation.output.inline.mechanic-liquid",
+          "captures": {
+            "0": {
+              "name": "inlinecode.mechanic-liquid"
+            }
+          },
+          "patterns": [
+            {
+              "match": "(?<={)-",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "match": "-(?=})",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "include": "#liquid_var"
+            }
+          ]
+        },
+        {
+          "begin": "{%",
+          "end": "%}",
+          "name": "inlinecode.mechanic-liquid punctuation.tag.inline.mechanic-liquid",
+          "captures": {
+            "0": {
+              "name": "inlinecode.mechanic-liquid"
+            }
+          },
+          "patterns": [
+            {
+              "match": "(?<=%)-",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "match": "-(?=%)",
+              "name": "entity.name.tag.mechanic-liquid"
+            },
+            {
+              "include": "#liquid_tag_name"
+            },
+            {
+              "include": "#liquid_var"
+            }
+          ]
+        },
+        {
+          "include": "#liquid_inside_tag_highlighting"
+        }
+      ]
+    },
+    "liquid_tag_name": {
+      "patterns": [
+        {
+          "match": "(?<={%-?\\s*)(?!if|elsif|else|endif|unless|endunless|for|endfor|case|when|break|continue|cycle)(\\w+)",
+          "name": "entity.name.tag.mechanic-liquid"
+        },
+        {
+          "match": "(?<={%-?\\s*)(if|elsif|else|endif|unless|endunless|case|when)",
+          "name": "keyword.control.conditional.mechanic-liquid"
+        },
+        {
+          "match": "(?<={%-?\\s*)(for|endfor|break|continue|cycle)",
+          "name": "keyword.control.mechanic-liquid"
+        }
+      ]
+    },
+    "liquid_var": {
+      "patterns": [
+        {
+          "captures": {
+            "2": {
+              "name": "invalid.illegal.filter.mechanic-liquid"
+            },
+            "3": {
+              "name": "invalid.illegal.filter.mechanic-liquid"
+            }
+          },
+          "match": "(\\[)(\\|)(?=[^\\]]*)(?=\\])"
+        },
+        {
+          "match": "(?<=\\s)(\\+|\\-|\\/|\\*)(?=\\s)",
+          "name": "invalid.illegal.filter.mechanic-liquid"
+        },
+        {
+          "match": "(false|true|empty|blank|nil)",
+          "name": "constant.language.mechanic-liquid"
+        },
+        {
+          "match": "\\=\\s*(hash|array)",
+          "captures": {
+            "1": {
+              "name": "storage.type.mechanic-liquid"
+            }
+          }
+        },
+        {
+          "captures": {
+            "3": {
+              "name": "invalid.illegal.operator.mechanic-liquid"
+            }
+          },
+          "match": "(?=if|unless|elsif)\\s*[^%}]+\\s(in)\\s"
+        },
+        {
+          "match": "\\s+(((\\!|\\=|\\<|\\>)\\=))\\s+",
+          "name": "keyword.operator.logical.mechanic-liquid"
+        },
+        {
+          "match": "\\s+(and|or|not|contains|in|by)\\s+",
+          "name": "keyword.operator.word.mechanic-liquid"
+        },
+        {
+          "captures": {
+            "2": {
+              "name": "invalid.illegal.assignment.mechanic-liquid"
+            }
+          },
+          "match": "(?<=assign)([^\\=]+)(\\=\\=+)"
+        },
+        {
+          "match": "\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\:\\s+",
+          "name": "support.function.with-args.mechanic-liquid"
+        },
+        {
+          "match": "\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\s+",
+          "name": "support.function.without-args.mechanic-liquid"
+        },
+        {
+          "match": "(?<=\\s)(offset\\:|limit\\:)",
+          "name": "keyword.control.mechanic-liquid"
+        },
+        {
+          "match": "(?<=\\s)(\\w+\\:)(?=\\:\\s)",
+          "name": "invalid.illegal.mechanic-liquid"
+        },
+        {
+          "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.mechanic-liquid"
+        },
+        {
+          "begin": "'",
+          "end": "'",
+          "name": "string.quoted.single.mechanic-liquid"
+        },
+        {
+          "match": "(-|\\+)?\\s*[0-9]+(\\.[0-9]+)?",
+          "name": "constant.numeric.mechanic-liquid"
+        },
+        {
+          "match": "\\b(collection|product|linklist|linklists|order|link|customer|customer_address|customer_group|dispute|line_item|shop|collections|page_title|template|image|blog|blogs|cart|checkout|pages|theme|themes|variant|items|comment|forloop|settings|draft_order|fulfillment|fulfillment_event|inventory_item|inventory_level|location|order_edit|order_transaction|refund)\\b",
+          "name": "entity.name.constant.shopify.mechanic-liquid"
+        },
+        {
+          "match": "\\b(assets|author|body|body_raw|current|date|excerpt_raw|meta|next|pages|parent|posts|previous|site|tags|taxonomy|title|url)\\b",
+          "name": "entity.name.constant.mechanic-liquid"
+        },
+        {
+          "match": "\\b(event|action|cache|task|options|email)\\b",
+          "name": "entity.name.constant.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "(?<=event\\.)(topic|data|source|created_at|preview|parent)\\b",
+          "name": "support.method.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "(?<=action\\.)(type|options|run)\\b",
+          "name": "support.method.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "(?<=action\\.run\\.)(id|ok|error|result|result_meta|attempts|enqueued_at|started_at|stopped_at|elapsed_time_ms)\\b",
+          "name": "support.method.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "(?<=action\\.run\\.)(result)\\b",
+          "name": "support.method.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "(?<=task\\.)(id|created_at)\\b",
+          "name": "support.method.mechanic.mechanic-liquid"
+        },
+        {
+          "match": "\\b(review)\\b",
+          "name": "entity.name.constant.third-party.mechanic-liquid"
+        },
+        {
+          "match": "(?<=forloop\\.)(index|index0|length|rindex|rindex0)\\b",
+          "name": "support.method.mechanic-liquid"
+        },
+        {
+          "match": "(?<=\\.)(first|last|size)\\b",
+          "name": "support.method.mechanic-liquid"
+        },
+        {
+          "match": "((?<=\\w\\:\\s)\\w+)",
+          "name": "variable.parameter.mechanic-liquid"
+        },
+        {
+          "match": "(?<=\\.)\\w+\\b",
+          "name": "support.variable.mechanic-liquid"
+        },
+        {
+          "match": "\\w+",
+          "name": "variable.other.mechanic-liquid"
+        }
+      ]
+    },
+    "liquid_native_comments": {
+      "patterns": [
+        {
+          "begin": "({%-?\\s*comment\\s*-?%})",
+          "end": "({%-?\\s*endcomment\\s*-?%})",
+          "name": "comment.block.mechanic-liquid",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.mechanic-liquid"
+            }
+          }
+        }
+      ]
+    },
+    "liquid_js_comments": {
+      "patterns": [
+        {
+          "begin": "^\\s*(\/\/)",
+          "end": "$",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.mechanic-liquid"
+            }
+          },
+          "name": "comment.line.double-slash.mechanic-liquid",
+          "patterns": [
+            {
+              "include": "#liquid_comment_init"
+            }
+          ]
+        },
+        {
+          "begin": "^\\s*\\/\\*\\/?\\**(?!\\/)",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.mechanic-liquid"
+            }
+          },
+          "end": "\\*+/",
+          "name": "comment.block.star-syntax.mechanic-liquid",
+          "patterns": [
+            {
+              "include": "#liquid_comment_init"
+            }
+          ]
+        }
+      ]
+    },
+    "liquid_inside_tag_highlighting": {
+      "patterns": [
+        {
+          "begin": "(?<={%-?\\s*action[\\S\\s]*?-?%})",
+          "end": "(?={%-?\\s*endaction\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#json_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*log\\s*?-?%})",
+          "end": "(?={%-?\\s*endlog\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#json_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*error\\s*?-?%})",
+          "end": "(?={%-?\\s*enderror\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#json_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*capture[\\S\\s]*?json[\\S\\s]*?-?%})",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#json_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*capture[\\S\\s]*?graphql[\\S\\s]*?-?%})",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#graphql_jsonplaceholder_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*capture[\\S\\s]*?html[\\S\\s]*?-?%})",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "text.html.derivative"
+            }
+          ]
+        },
+        {
+          "begin": "(?<={%-?\\s*capture[\\S\\s]*?-?%})",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {
+              "include": "#manual_inline_language_highlighting"
+            }
+          ]
+        }
+      ]
+    },
+    "manual_inline_language_highlighting": {
+      "patterns": [
+        {
+          "begin": "^\\s*(\/\/)",
+          "end": "$",
+          "name": "comment.inline.double-slash.in-comment.mechanic-liquid",
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.mechanic-liquid"
+            }
+          }
+        },
+        {
+          "begin": "(?<=^\\s*\/\/ *\\<\\[html\\]\\>)",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {              
+              "include": "text.html.derivative"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=^\\s*\/\/ *\\<\\[json\\]\\>)",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {              
+              "include": "#json_init"
+            }
+          ]
+        },
+        {
+          "begin": "(?<=^\\s*\/\/ *\\<\\[graphql\\]\\>)",
+          "end": "(?={%-?\\s*endcapture\\s*?-?%})",
+          "patterns": [
+            {              
+              "include": "#graphql_jsonplaceholder_init"
+            }
+          ]
+        }
+      ]
+    },
+    "json_array": {
+      "begin": "\\[",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.array.begin.json"
+        }
+      },
+      "end": "\\]",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.array.end.json"
+        }
+      },
+      "name": "meta.structure.array.json",
+      "patterns": [
+        {
+          "include": "#json_init"
+        },
+        {
+          "match": ",",
+          "name": "punctuation.separator.array.json"
+        },
+        {
+          "match": "[^\\s\\]]",
+          "name": "invalid.illegal.expected-array-separator.json"
+        }
+      ]
+    },
+    "json_comments": {
+      "patterns": [
+        {
+          "begin": "/\\*\\*(?!/)",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.json"
+            }
+          },
+          "end": "\\*/",
+          "name": "comment.block.documentation.json",
+          "patterns": [
+            {
+              "include": "#liquid_inline_init"
+            }
+          ]
+        },
+        {
+          "begin": "/\\*",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.json"
+            }
+          },
+          "end": "\\*/",
+          "name": "comment.block.json",
+          "patterns": [
+            {
+              "include": "#liquid_inline_init"
+            }
+          ]
+        },
+        {
+          "captures": {
+            "1": {
+              "name": "punctuation.definition.comment.json"
+            }
+          },
+          "begin": "\/\/",
+          "end": "$",
+          "name": "comment.line.double-slash.js",
+          "patterns": [
+            {
+              "include": "#liquid_inline_init"
+            }
+          ]
+        }
+      ]
+    },
+    "json_constant": {
+      "match": "\\b(?:true|false|null)\\b",
+      "name": "constant.language.json"
+    },
+    "json_number": {
+      "match": "(?x)        # turn on extended mode\n  -?        # an optional minus\n  (?:\n    0       # a zero\n    |       # ...or...\n    [1-9]   # a 1-9 character\n    \\d*     # followed by zero or more digits\n  )\n  (?:\n    (?:\n      \\.    # a period\n      \\d+   # followed by one or more digits\n    )?\n    (?:\n      [eE]  # an e character\n      [+-]? # followed by an option +/-\n      \\d+   # followed by one or more digits\n    )?      # make exponent optional\n  )?        # make decimal portion optional",
+      "name": "constant.numeric.json"
+    },
+    "json_object": {
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.begin.json"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.dictionary.end.json"
+        }
+      },
+      "name": "meta.structure.dictionary.json",
+      "patterns": [
+        {
+          "include": "#liquid_inline_init"
+        },
+        {
+          "comment": "the JSON object key",
+          "include": "#json_objectkey"
+        },
+        {
+          "comment": "#json_comments"
+        },
+        {
+          "begin": ":",
+          "beginCaptures": {
+            "0": {
+              "name": "punctuation.separator.dictionary.key-value.json"
+            }
+          },
+          "end": "(,)|(?=\\})",
+          "endCaptures": {
+            "1": {
+              "name": "punctuation.separator.dictionary.pair.json"
+            }
+          },
+          "name": "meta.structure.dictionary.value.json",
+          "patterns": [
+            {
+              "comment": "the JSON object value",
+              "include": "#json_init"
+            },
+            {
+              "match": "[^\\s,\\{{]",
+              "name": "invalid.illegal.expected-dictionary-separator.json"
+            },
+            {
+              "match": "[^\\s,]\\{",
+              "name": "invalid.illegal.expected-dictionary-separator.json"
+            }
+          ]
+        },
+        {
+          "match": "[^\\s\\}]",
+          "name": "invalid.illegal.expected-dictionary-separator.json"
+        }
+      ]
+    },
+    "json_string": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin.json"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end.json"
+        }
+      },
+      "name": "string.quoted.double.json",
+      "patterns": [
+        {
+          "include": "#liquid_inline_init"
+        },
+        {
+          "include": "#json_stringcontent"
+        }
+      ]
+    },
+    "json_objectkey": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.support.type.property-name.begin.json"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.support.type.property-name.end.json"
+        }
+      },
+      "name": "string.json support.type.property-name.json",
+      "patterns": [
+        {
+          "include": "#liquid_inline_init"
+        },
+        {
+          "include": "#json_stringcontent"
+        }
+      ]
+    },
+    "json_stringcontent": {
+      "patterns": [
+        {
+          "match": "(?x)                # turn on extended mode\n  \\\\                # a literal backslash\n  (?:               # ...followed by...\n    [\"\\\\/bfnrt]     # one of these characters\n    |               # ...or...\n    u               # a u\n    [0-9a-fA-F]{4}) # and four hex digits",
+          "name": "constant.character.escape.json"
+        },
+        {
+          "match": "\\\\.",
+          "name": "invalid.illegal.unrecognized-string-escape.json"
+        }
+      ]
+    },
+    "json_init": {
+      "patterns": [
+        {
+          "include": "#liquid_inline_init"
+        },
+        {
+          "include": "#json_constant"
+        },
+        {
+          "include": "#json_number"
+        },
+        {
+          "include": "#json_string"
+        },
+        {
+          "include": "#json_array"
+        },
+        {
+          "include": "#json_object"
+        },
+        {
+          "comment": "#json_comments"
+        }
+      ]
+    },
+    "graphql_jsonplaceholder_init": {
+      "patterns": [
+        {
+          "include": "#liquid_inline_init"
+        },
+        {
+          "include": "#json_constant"
+        },
+        {
+          "include": "#json_number"
+        },
+        {
+          "include": "#json_string"
+        },
+        {
+          "include": "#json_array"
+        },
+        {
+          "include": "#json_object"
+        },
+        {
+          "comment": "#json_comments"
+        }
+      ]
+    }
+  },
+  "scopeName": "source.mechanic-liquid",
+  "uuid": "099fc055-4edd-4e06-b73d-c5458098b949"
+}

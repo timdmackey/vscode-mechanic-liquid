@@ -1,147 +1,21 @@
-# Shopify Liquid Template Snippets for VS Code
-This extension for Visual Studio Code adds snippets for Shopify Liquid Template.
+# Mechanic Liquid Support for VS Code
 
-Visual Studio Marketplace link: [https://marketplace.visualstudio.com/items?itemName=killalau.vscode-liquid-snippets](https://marketplace.visualstudio.com/items?itemName=killalau.vscode-liquid-snippets)
+This Visual Studio Code extension provides unofficial support for syntax highlighting and code snippets for the [**Mechanic app**](https://mechanic.dev) on the Shopify platform. ***The extension is currently a pre-release preview, so bugs should be expected.***
 
-## Preview
-![Showcase](https://github.com/killalau/vscode-liquid-snippets/raw/master/./images/showcase.gif)
+Mechanic-flavored Liquid is implemented as its own language, “Mechanic Liquid,” and so it should play nice with other liquid extensions out there, including [[Liquid *by Νίκος*](https://marketplace.visualstudio.com/items?itemName=sissel.shopify-liquid)], [[Liquid Languages Support *by Neil Ding*](https://marketplace.visualstudio.com/items?itemName=neilding.language-liquid)], and [[Shopify Liquid Template Snippets *by Franky Lau*](https://marketplace.visualstudio.com/items?itemName=killalau.vscode-liquid-snippets)].
 
-## Prerequisite
-1. Install the latest Visual Studio Code
+## Enabling Mechanic-Liquid language support
 
-## Dependencies
-1. [Liquid Languages Support](https://marketplace.visualstudio.com/items?itemName=neilding.language-liquid)
+To enable syntax highlighting and snippet support, simply change the language of your document to `Mechanic Liquid`. This can be done by clicking on the language name at the bottom of the VSCode window, or by typing the key chord `Cmd` \ `Ctrl` + `K`, `M`. This extension will automatically enable itself on filenames ending with `.mechanic.liquid`.
 
-## Installation
-1. Launch Code
-2. From the command palette `Ctrl`-`Shift`-`P` (Windows, Linux) or `Cmd`-`Shift`-`P` (OSX)
-3. Type `ext install vscode-liquid-snippets`
-4. Reload Visual Studio Code
+## Snippets
+To use a snippet, type part of a snippet, press `enter` or `tab`, and the snippet will unfold. For complex snippets with multiple parameters, you can move through each input point using the `tab` key.
 
-## Usage
-Type part of a snippet, press `enter`, and the snippet unfolds.
+## Supporting the extension
 
-Alternatively, press `Ctrl`+`Space` (Windows, Linux) or `Cmd`+`Space` (OSX) to activate snippets from within the editor.
+This extension is in active development inside my free time. I decided to write it to make life easier when coding my own Mechanic tasks. If you feel you’ve benefitted from using this extension, [how about buying me a coffee?](https://www.buymeacoffee.com/timdmackey) 😄☕️🙏
 
-### Control Flow Tag
-```javascript
-if
-else
-elsif
-ifelse
-unless
-case
-when
-```
-
-### Iteration Tag
-```javascript
-cycle
-cyclegroup
-for
-limit       // For loops option
-offset      // For loops option
-reversed    // For loops option
-break
-continue
-tablerow
-```
-
-### Variable Tag
-```javascript
-assign
-increment
-decrement
-capture
-```
-
-### Theme Tag
-```javascript
-include
-includewith    // Theme Tag {% include %} with parameters
-raw
-layout
-layoutnone
-paginate
-```
-
-### Array Filter
-```javascript
-join
-first
-last
-concat
-map
-reverse
-size
-sort
-uniq
-```
-
-### HTML Filter
-```javascript
-img_tag
-img_tag_param  // HTML Filter {% img_tag %} with parameters
-script_tag
-stylesheet_tag
-```
-
-### Math Filter
-```javascript
-abs
-ceil
-divided_by
-floor
-minus
-plus
-round
-times
-modulo
-```
-
-### Money Filter
-```javascript
-money
-money_with_currency
-money_without_trailing_zeros
-money_without_currency
-```
-
-### String Filter
-```javascript
-append
-camelcase
-captialize
-downcase
-escape
-handleize
-md5
-newline_to_br
-pluralize
-prepend
-remove
-remove_first
-replace
-replace_first
-slice
-slice_single   // String Filter 'slice' with single parameter
-split
-strip
-lstrip
-rstrip
-strip_html
-strip_newlines
-truncate
-truncatewords
-upcase
-url_encode
-url_escape
-url_param_escape
-```
-
-### URL Filter
-```javascript
-asset_url
-asset_img_url
-img_url
-```
+## Contributing
+I will be setting up a github repo for this project soon, where I will be happy to hear feedback and receive any bug reports. In the meantime, check out the amazing [**Mechanic app**](https://mechanic.dev) and the ever-welcoming [Mechanic Slack community](https://join.slack.com/t/usemechanic/shared_invite/zt-cq84nrs7-ggYbYTbf~CrCjTg8nmHP2A)!
+## Visual Studio Marketplace link
+[https://marketplace.visualstudio.com/items?itemName=timdmackey.mechanic-liquid](https://marketplace.visualstudio.com/items?itemName=timdmackey.mechanic-liquid)

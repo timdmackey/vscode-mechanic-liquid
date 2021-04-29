@@ -1,0 +1,221 @@
+{
+  "fileTypes": [
+    "mechanic-graphql"
+  ],
+  "foldingStartMarker": "{([",
+  "foldingStopMarker": "})]",
+  "name": "GraphQL",
+  "patterns": [
+    {
+      "include": "#comment"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type"
+        },
+        "2": {
+          "name": "variable.other"
+        },
+        "3": {
+          "name": "keyword.operator"
+        },
+        "4": {
+          "name": "support.constant"
+        }
+      },
+      "comment": "a fragment definition",
+      "match": "(fragment)\\s*([_A-Za-z][_0-9A-Za-z]*)\\s*(on)\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "name": "meta.fragment"
+    },
+    {
+      "captures": {
+        "1": {
+          "name": "storage.type"
+        },
+        "2": {
+          "name": "variable.parameter"
+        }
+      },
+      "comment": "an operation definition",
+      "match": "(query|mutation)\\s*([_A-Za-z][_0-9A-Za-z]*)",
+      "name": "meta.operation"
+    },
+    {
+      "include": "#arguments"
+    },
+    {
+      "include": "#selections"
+    }
+  ],
+  "repository": {
+    "argument": {
+      "match": "[_A-Za-z][_0-9A-Za-z]*:",
+      "name": "variable.parameter"
+    },
+    "arguments": {
+      "begin": "\\(",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.round.mechanic-graphql"
+        }
+      },
+      "end": "\\)",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.round.mechanic-graphql"
+        }
+      },
+      "name": "meta.arguments",
+      "patterns": [
+        {
+          "include": "#argument"
+        },
+        {
+          "include": "#string"
+        },
+        {
+          "include": "#boolean"
+        },
+        {
+          "include": "#variable"
+        },
+        {
+          "include": "#number"
+        },
+        {
+          "include": "#enum"
+        },
+        {
+          "include": "#comment"
+        }
+      ]
+    },
+    "boolean": {
+      "match": "true|false",
+      "name": "constant.language.boolean"
+    },
+    "builtInField": {
+      "match": "__schema|__typename|__type",
+      "name": "support.variable"
+    },
+    "comment": {
+      "match": "#.*$",
+      "name": "comment.line.number-sign.mechanic-graphql"
+    },
+    "directive": {
+      "match": "@[a-z]+",
+      "name": "storage.modifier"
+    },
+    "enum": {
+      "match": "[_A-Za-z][_0-9A-Za-z]*",
+      "name": "support.constant.enum"
+    },
+    "escapedChar": {
+      "match": "\\\\(?:u[\\da-fA-f]{4}|.)",
+      "name": "constant.character.escape.mechanic-graphql"
+    },
+    "fieldAlias": {
+      "match": "[_A-Za-z][_0-9A-Za-z]*:",
+      "name": "variable.other.alias.mechanic-graphql"
+    },
+    "fragmentSpread": {
+      "captures": {
+        "1": {
+          "name": "keyword.operator"
+        },
+        "2": {
+          "name": "variable.parameter"
+        },
+        "3": {
+          "name": "variable.other"
+        }
+      },
+      "match": "(\\.\\.\\.)\\s*([_A-Za-z][_0-9A-Za-z]*)\\s*(on)?"
+    },
+    "inlineFragment": {
+      "captures": {
+        "1": {
+          "name": "keyword.operator"
+        },
+        "2": {
+          "name": "keyword.operator"
+        },
+        "3": {
+          "name": "support.constant"
+        }
+      },
+      "match": "(\\.\\.\\.)\\s*(on)\\s*([_A-Za-z][_0-9A-Za-z]*)"
+    },
+    "number": {
+      "match": "\\d+\\.?\\d*[eE]?[\\+\\-]?\\d*",
+      "name": "constant.numeric"
+    },
+    "selections": {
+      "begin": "\\{",
+      "beginCaptures": {
+        "0": {
+          "name": "meta.brace.curly.mechanic-graphql"
+        }
+      },
+      "end": "\\}",
+      "endCaptures": {
+        "0": {
+          "name": "meta.brace.curly.mechanic-graphql"
+        }
+      },
+      "name": "meta.selections",
+      "patterns": [
+        {
+          "include": "#fieldAlias"
+        },
+        {
+          "include": "#inlineFragment"
+        },
+        {
+          "include": "#fragmentSpread"
+        },
+        {
+          "include": "#directive"
+        },
+        {
+          "include": "#arguments"
+        },
+        {
+          "include": "#comment"
+        },
+        {
+          "include": "#selections"
+        },
+        {
+          "include": "#builtInField"
+        }
+      ]
+    },
+    "string": {
+      "begin": "\"",
+      "beginCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.begin"
+        }
+      },
+      "end": "\"",
+      "endCaptures": {
+        "0": {
+          "name": "punctuation.definition.string.end"
+        }
+      },
+      "name": "string.quoted.double",
+      "patterns": [
+        {
+          "include": "#escapedChar"
+        }
+      ]
+    },
+    "variable": {
+      "match": "\\$[_A-Za-z][_0-9A-Za-z]*",
+      "name": "constant.other.symbol"
+    }
+  },
+  "scopeName": "source.mechanic-graphql"
+}

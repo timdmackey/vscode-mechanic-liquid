@@ -1,62 +1,83 @@
 {
-	"name": "vscode-liquid-snippets",
-	"version": "0.2.7",
+	"name": "mechanic-liquid",
+	"version": "0.0.11",
+	"preview": true,
 	"publisher": "timdmackey",
-	"displayName": "Shopify Liquid Template Snippets",
-	"description": "Shopify Liquid Template snippets",
-	"icon": "images/shopify-icon.png",
+	"displayName": "Mechanic Liquid Support",
+	"description": "Provides syntax highlighting and code snippets for Mechanic-flavored Liquid",
+	"icon": "images/mechanic-liquid-logo-2.png",
 	"galleryBanner": {
-		"color": "#30373b",
+		"color": "#092f2f",
 		"theme": "dark"
 	},
 	"engines": {
-		"vscode": "0.10.x"
+		"vscode": "^1.0.0"
 	},
 	"categories": [
+		"Programming Languages",
 		"Snippets"
 	],
 	"keywords": [
-		"snippets",
 		"liquid",
-		"shopify"
+		"shopify",
+		"mechanic"
 	],
-	"license": "SEE LICENSE IN LICENSE.txt",
-	"homepage": "https://github.com/killalau/vscode-liquid-snippets",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/killalau/vscode-liquid-snippets.git"
-	},
-	"bugs": "https://github.com/killalau/vscode-liquid-snippets/issues",
+	"qna": false,
+	"license": "LICENSE.md",
+	"activationEvents": [
+		"*"
+	],
+	"main": "./scripts/extension.js",
 	"contributes": {
+		"languages": [
+			{
+				"id": "mechanic-liquid",
+				"aliases": [
+					"Mechanic Liquid",
+					"Shopify Mechanic Liquid"
+				],
+				"extensions": [
+					".mechanic.liquid"
+				],
+				"configuration": "./languages/mechanic-liquid.language-configuration.json"
+			}
+		],
+		"grammars": [
+			{
+				"language": "mechanic-liquid",
+				"scopeName": "source.mechanic-liquid",
+				"path": "./syntaxes/mechanic-liquid.tmLanguage.json"
+			}
+		],
 		"snippets": [
 			{
-				"language": "liquid",
+				"language": "mechanic-liquid",
 				"path": "./snippets/liquid.json"
 			},
 			{
-				"language": "liquid-html",
-				"path": "./snippets/liquid.json"
+				"language": "mechanic-liquid",
+				"path": "./snippets/mechanic-liquid.json"
+			}
+		],
+		"colors": [
+			{
+				"id": "mechanicLiquid.commentBackground",
+				"description": "Background decoration color for comments",
+				"defaults": {
+					"dark": "#ffffff10",
+					"light": "#00000010",
+					"highContrast": "#ffffff09"
+				}
 			},
 			{
-				"language": "liquid-js",
-				"path": "./snippets/liquid.json"
-			},
-			{
-				"language": "liquid-css",
-				"path": "./snippets/liquid.json"
-			},
-			{
-				"language": "liquid-sass",
-				"path": "./snippets/liquid.json"
+				"id": "mechanicLiquid.actionBackground",
+				"description": "Background decoration color for comments",
+				"defaults": {
+					"dark": "#ff000010",
+					"light": "#ff000010",
+					"highContrast": "#ff000009"
+				}
 			}
 		]
-	},
-	"extensionDependencies": [
-		"timdmackey.language-liquid"
-	],
-	"__metadata": {
-		"id": "2459f41e-2bde-4c19-a5ae-1ca33b72083a",
-		"publisherId": "5139bf11-ed3b-42bb-9aaf-376ea9c09b1b",
-		"publisherDisplayName": "Tim Mackey"
 	}
 }
