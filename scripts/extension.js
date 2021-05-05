@@ -12,18 +12,19 @@ function activate(context) {
     function createDecorations() {
         console.log("createDecorations()");
         // create a decorator type that we use to decorate comments
-        // if (typeof decorationTypes.commentInlineDecorationType != "object") {
-        //     decorationTypes.commentInlineDecorationType = vscode.window.createTextEditorDecorationType({
-        //         // use a themable color. See package.json for the declaration and default values.
-        //         backgroundColor: { id: 'mechanicLiquid.commentBackground' },
-        //     });
-        // }
+        if (typeof decorationTypes.commentInlineDecorationType != "object") {
+            decorationTypes.commentInlineDecorationType = vscode.window.createTextEditorDecorationType({
+                // use a themable color. See package.json for the declaration and default values.
+                backgroundColor: { id: 'mechanicLiquid.commentBackground' },
+                // isWholeLine: true
+            });
+        }
         if (typeof decorationTypes.commentBlockDecorationType != "object") {
             decorationTypes.commentBlockDecorationType = vscode.window.createTextEditorDecorationType({
                 // use a themable color. See package.json for the declaration and default values.
                 backgroundColor: { id: 'mechanicLiquid.commentBackground' },
-                gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-grey.png")),
-                gutterIconSize: "cover",
+                // gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-grey.png")),
+                // gutterIconSize: "cover",
                 isWholeLine: true
             });
         }
@@ -31,8 +32,35 @@ function activate(context) {
             decorationTypes.actionBlockDecorationType = vscode.window.createTextEditorDecorationType({
                 // use a themable color. See package.json for the declaration and default values.
                 backgroundColor: { id: 'mechanicLiquid.actionBackground' },
-                gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-red.png")),
-                gutterIconSize: "cover",
+                // gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-red.png")),
+                // gutterIconSize: "cover",
+                isWholeLine: true
+            });
+        }
+        if (typeof decorationTypes.queryInlineDecorationType != "object") {
+            decorationTypes.queryInlineDecorationType = vscode.window.createTextEditorDecorationType({
+                // use a themable color. See package.json for the declaration and default values.
+                backgroundColor: { id: 'mechanicLiquid.queryBackground' },
+                // gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-red.png")),
+                // gutterIconSize: "cover",
+                // isWholeLine: true
+            });
+        }
+        if (typeof decorationTypes.statusBlockDecorationType != "object") {
+            decorationTypes.statusBlockDecorationType = vscode.window.createTextEditorDecorationType({
+                // use a themable color. See package.json for the declaration and default values.
+                backgroundColor: { id: 'mechanicLiquid.statusBackground' },
+                // gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-red.png")),
+                // gutterIconSize: "cover",
+                isWholeLine: true
+            });
+        }
+        if (typeof decorationTypes.errorBlockDecorationType != "object") {
+            decorationTypes.errorBlockDecorationType = vscode.window.createTextEditorDecorationType({
+                // use a themable color. See package.json for the declaration and default values.
+                backgroundColor: { id: 'mechanicLiquid.errorBackground' },
+                // gutterIconPath: vscode.Uri.file(context.asAbsolutePath("images/color-bar-red.png")),
+                // gutterIconSize: "cover",
                 isWholeLine: true
             });
         }
@@ -47,17 +75,41 @@ function activate(context) {
         }
         const matchSets = [
             [
+                decorationTypes.commentInlineDecorationType,
+                [
+                    /{%-?\s*comment\s*-?%}[\S \t]*?{%-?\s*endcomment\s*-?%}/gm
+                ]
+            ],
+            [
                 decorationTypes.commentBlockDecorationType,
                 [
                     /^[ \t]*?\/\/[\S\s]*?$/gm,
                     /^[ \t]*?\/\*[\S\s]*?\*\/\s*?$/gm,
-                    /{%-?\s*comment\s*-?%}[\S\s]*?{%-?\s*endcomment\s*-?%}/g
+                    /{%-?\s*comment\s*-?%}(?:(?!{%-?\s*endcomment\s*-?%}).)*[\r\n][\S\s]*?{%-?\s*endcomment\s*-?%}/g
+                ]
+            ],
+            [
+                decorationTypes.queryInlineDecorationType,
+                [
+                    /{%-?\s*assign(?:(?!-?%}).)*shopify[\S\s]-?%}/g
                 ]
             ],
             [
                 decorationTypes.actionBlockDecorationType,
                 [
                     /{%-?\s*action[\S\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g
+                ]
+            ],
+            [
+                decorationTypes.statusBlockDecorationType,
+                [
+                    /{%-?\s*log[\s]*?-?%}[\S\s]*?{%-?\s*endlog\s*?-?%}/g
+                ]
+            ],
+            [
+                decorationTypes.errorBlockDecorationType,
+                [
+                    /{%-?\s*error[\s]*?-?%}[\S\s]*?{%-?\s*enderror\s*?-?%}/g
                 ]
             ]
         ];
@@ -93,8 +145,11 @@ function activate(context) {
         console.log("disposeDecorations()");
         let disposal = [
             decorationTypes.actionBlockDecorationType,
+            decorationTypes.queryInlineDecorationType,
             decorationTypes.commentBlockDecorationType,
-            decorationTypes.commentInlineDecorationType
+            decorationTypes.commentInlineDecorationType,
+            decorationTypes.statusBlockDecorationType,
+            decorationTypes.errorBlockDecorationType
         ]
         decorationTypes = {};
         for (let index = 0; index < disposal.length; index++) {

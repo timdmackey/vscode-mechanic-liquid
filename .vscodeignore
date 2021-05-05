@@ -1,9 +1,5 @@
 .gitignore
 /.vscode
-/vsc-extension-quickstart.md
-/update.sh
-/dev/
-/TODO.md
 /languages/mechanic-graphql.language-configuration.json
 /syntaxes/mechanic-graphql.tmLanguage.json
 /snippets/shopify-liquid.json

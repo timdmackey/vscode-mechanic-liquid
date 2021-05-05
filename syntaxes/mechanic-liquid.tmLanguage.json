@@ -14,7 +14,7 @@
     "embedded_graphql": {
       "patterns": [
         {
-          "match": "(?<={%-?\\s*capture\\s*\\w*\\s*-?%}\\s*\/\/\\<[graphql\\]>)([\\w\\s]*){%-?\\s*endcapture\\s*-?%}",
+          "match": "(?<={%-?\\s*capture\\s*\\w*\\s*-?%}\\s*\/\/\\<\\[graphql\\]>)([\\w\\s]*){%-?\\s*endcapture\\s*-?%}",
           "include": "#graphql_jsonplaceholder_init"
         }
       ]
@@ -198,11 +198,12 @@
     "liquid_tag_name": {
       "patterns": [
         {
-          "match": "(?<={%-?\\s*)(?!if|elsif|else|endif|unless|endunless|for|endfor|case|when|break|continue|cycle)(\\w+)",
+          "comment": "Generic tags (must exclude other specific tags)",
+          "match": "(?<={%-?\\s*)(?!if|elsif|else|endif|unless|endunless|for|endfor|case|endcase|when|break|continue|cycle)(\\w+)",
           "name": "entity.name.tag.mechanic-liquid"
         },
         {
-          "match": "(?<={%-?\\s*)(if|elsif|else|endif|unless|endunless|case|when)",
+          "match": "(?<={%-?\\s*)(if|elsif|else|endif|unless|endunless|case|endcase|when)",
           "name": "keyword.control.conditional.mechanic-liquid"
         },
         {
@@ -265,11 +266,11 @@
           "match": "(?<=assign)([^\\=]+)(\\=\\=+)"
         },
         {
-          "match": "\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\:\\s+",
+          "match": "\\|\\s*(?![\\.0-9])[a-zA-Z0-9_-]+\\:\\s*",
           "name": "support.function.with-args.mechanic-liquid"
         },
         {
-          "match": "\\|\\s+(?![\\.0-9])[a-zA-Z0-9_-]+\\s+",
+          "match": "\\|\\s*(?![\\.0-9])[a-zA-Z0-9_-]+\\s*",
           "name": "support.function.without-args.mechanic-liquid"
         },
         {

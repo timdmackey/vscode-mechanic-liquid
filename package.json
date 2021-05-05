@@ -5,7 +5,7 @@
 	"publisher": "timdmackey",
 	"displayName": "Mechanic Liquid Support",
 	"description": "Provides syntax highlighting and code snippets for Mechanic-flavored Liquid",
-	"icon": "images/mechanic-liquid-logo-2.png",
+	"icon": "images/mechanic-liquid-logo.png",
 	"galleryBanner": {
 		"color": "#092f2f",
 		"theme": "dark"
@@ -72,6 +72,33 @@
 			{
 				"id": "mechanicLiquid.actionBackground",
 				"description": "Background decoration color for comments",
+				"defaults": {
+					"dark": "#ff000010",
+					"light": "#ff000010",
+					"highContrast": "#ff000009"
+				}
+			},
+			{
+				"id": "mechanicLiquid.queryBackground",
+				"description": "Background decoration color for comments",
+				"defaults": {
+					"dark": "#7700ff22",
+					"light": "#7700ff22",
+					"highContrast": "#7700ff11"
+				}
+			},
+			{
+				"id": "mechanicLiquid.statusBackground",
+				"description": "Background decoration color for echo and log tags",
+				"defaults": {
+					"dark": "#00a6ff22",
+					"light": "#00a6ff22",
+					"highContrast": "#00a6ff11"
+				}
+			},
+			{
+				"id": "mechanicLiquid.errorBackground",
+				"description": "Background decoration color for error tags",
 				"defaults": {
 					"dark": "#ff000010",
 					"light": "#ff000010",
