@@ -13,7 +13,7 @@ To use a snippet, type part of a snippet, press `enter` or `tab`, and the snippe
 
 ## Color Theming
 The extension creates background highlighting for several types of objects, including **action tags**, ***shopify* filter queries**, **comments**, **log tags**, and **error tags**. You can customize these colors by adding the following to your `settings.json` file, and changing the colors to match your preferences:
-```json
+```jsonc
 "workbench.colorCustomizations":{
   // wrapping your color specifications in an object with a theme name will limit these color overrides to that particular theme:
   "[Material Theme Lighter High Contrast]": {
