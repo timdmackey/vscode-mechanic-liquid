@@ -1,11 +1,4 @@
 {
-  "Script console log": {
-    "prefix": "log",
-    "description": "Script tag: console log",
-    "body": [
-      "<script>console.log(${1:{{ product | json \\}\\}});</script>"
-    ]
-  },
   "Mechanic tag: error": {
     "prefix": "error",
     "description": "Mechanic tag: error",

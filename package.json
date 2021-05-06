@@ -22,6 +22,12 @@
 		"shopify",
 		"mechanic"
 	],
+	"homepage": "https://github.com/timdmackey/vscode-mechanic-liquid",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/timdmackey/vscode-mechanic-liquid.git"
+	},
+	"bugs": "https://github.com/timdmackey/vscode-mechanic-liquid/issues",
 	"qna": false,
 	"license": "LICENSE.md",
 	"activationEvents": [
@@ -73,9 +79,9 @@
 				"id": "mechanicLiquid.actionBackground",
 				"description": "Background decoration color for comments",
 				"defaults": {
-					"dark": "#ff000010",
-					"light": "#ff000010",
-					"highContrast": "#ff000009"
+					"dark": "#62ff0038",
+					"light": "#62ff0038",
+					"highContrast": "#62ff0038"
 				}
 			},
 			{
@@ -84,25 +90,25 @@
 				"defaults": {
 					"dark": "#7700ff22",
 					"light": "#7700ff22",
-					"highContrast": "#7700ff11"
+					"highContrast": "#7700ff22"
 				}
 			},
 			{
 				"id": "mechanicLiquid.statusBackground",
 				"description": "Background decoration color for echo and log tags",
 				"defaults": {
-					"dark": "#00a6ff22",
-					"light": "#00a6ff22",
-					"highContrast": "#00a6ff11"
+					"dark": "#005eff1d",
+					"light": "#005eff1d",
+					"highContrast": "#005eff1d"
 				}
 			},
 			{
 				"id": "mechanicLiquid.errorBackground",
 				"description": "Background decoration color for error tags",
 				"defaults": {
-					"dark": "#ff000010",
-					"light": "#ff000010",
-					"highContrast": "#ff000009"
+					"dark": "#ff000022",
+					"light": "#ff000022",
+					"highContrast": "#ff000022"
 				}
 			}
 		]
