@@ -97,19 +97,22 @@ function activate(context) {
             [
                 decorationTypes.actionBlockDecorationType,
                 [
-                    /{%-?\s*action[\S\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g
+                    /{%-?\s*action[\s]+?\S+[\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g, // block action
+                    /{%-?\s*action\s+?['"]\b[a-zA-Z_]+\b['"][\s,]+?(?!-?%})[\S\s]*?-?%}/g // inline action
                 ]
             ],
             [
                 decorationTypes.statusBlockDecorationType,
                 [
-                    /{%-?\s*log[\s]*?-?%}[\S\s]*?{%-?\s*endlog\s*?-?%}/g
+                    /{%-?\s*log\s*?-?%}[\S\s]*?{%-?\s*endlog\s*?-?%}/g, // block log
+                    /{%-?\s*log\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g // inline log
                 ]
             ],
             [
                 decorationTypes.errorBlockDecorationType,
                 [
-                    /{%-?\s*error[\s]*?-?%}[\S\s]*?{%-?\s*enderror\s*?-?%}/g
+                    /{%-?\s*error\s*?-?%}[\S\s]*?{%-?\s*enderror\s*?-?%}/g, // block error
+                    /{%-?\s*error\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g // inline error
                 ]
             ]
         ];
