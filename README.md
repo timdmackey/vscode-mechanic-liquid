@@ -34,5 +34,7 @@ This extension is in active development inside my free time. I decided to write 
 Bug reports and issues can be reported on the extension’s [GitHub Issue Page](https://github.com/timdmackey/vscode-mechanic-liquid/issues). You're also welcome to make suggestions for improvements to the extension.
 
 In the meantime, check out the amazing [**Mechanic app**](https://mechanic.dev) and the ever-welcoming [Mechanic Slack community](https://join.slack.com/t/usemechanic/shared_invite/zt-cq84nrs7-ggYbYTbf~CrCjTg8nmHP2A)!
-## Visual Studio Marketplace Link
-[https://marketplace.visualstudio.com/items?itemName=timdmackey.mechanic-liquid](https://marketplace.visualstudio.com/items?itemName=timdmackey.mechanic-liquid)
+## Installation
+Published to the [Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=timdmackey.mechanic-liquid).
+
+Published simultaneously to the [Open VSX Directory](https://open-vsx.org/extension/timdmackey/mechanic-liquid) for use with [Theia IDE](https://theia-ide.org/).
