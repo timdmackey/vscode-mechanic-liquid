@@ -97,22 +97,24 @@ function activate(context) {
             [
                 decorationTypes.actionBlockDecorationType,
                 [
-                    /{%-?\s*action[\s]+?\S+[\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g, // block action
-                    /{%-?\s*action\s+?['"]\b[a-zA-Z_]+\b['"][\s,]+?(?!-?%})[\S\s]*?-?%}/g // inline action
+                    /{%-?\s*action[\s]+?(?!['"]echo)\S+[\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g, // block action (except echo)
+                    /{%-?\s*action\s+?['"]*?(?!echo)\b[a-zA-Z_]+\b['"]*?[\s,]+?(?!-?%})[\S\s]*?-?%}/g // inline action (except echo)
                 ]
             ],
             [
                 decorationTypes.statusBlockDecorationType,
                 [
-                    /{%-?\s*log\s*?-?%}[\S\s]*?{%-?\s*endlog\s*?-?%}/g, // block log
-                    /{%-?\s*log\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g // inline log
+                    /{%-?\s*log\s*?-?%}[\S\s]*?{%-?\s*endlog\s*?-?%}/g, // block log tag
+                    /{%-?\s*log\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g, // inline log tag
+                    /{%-?\s*action[\s]+?['"]echo\S+[\s]*?-?%}[\S\s]*?{%-?\s*endaction\s*?-?%}/g, // block echo action
+                    /{%-?\s*action\s+?['"]echo['"][\s,]+?(?!-?%})[\S\s]*?-?%}/g // inline echo action
                 ]
             ],
             [
                 decorationTypes.errorBlockDecorationType,
                 [
-                    /{%-?\s*error\s*?-?%}[\S\s]*?{%-?\s*enderror\s*?-?%}/g, // block error
-                    /{%-?\s*error\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g // inline error
+                    /{%-?\s*error\s*?-?%}[\S\s]*?{%-?\s*enderror\s*?-?%}/g, // block error tag
+                    /{%-?\s*error\s+?(?!-?%})[\S][\S\s]*?\s*?-?%}/g // inline error tag
                 ]
             ]
         ];
