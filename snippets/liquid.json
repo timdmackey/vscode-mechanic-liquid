@@ -35,12 +35,39 @@
       "{% endif %}"
     ]
   },
+  "Tag if elsif": {
+    "prefix": "ifelsif",
+    "description": "Control flow tag: if elsif",
+    "body": [
+      "{% if ${1:condition} %}",
+      "\t$2",
+      "{% elsif ${3:condition} %}",
+      "\t$4",
+      "{% else %}",
+      "\t$5",
+      "{% endif %}"
+    ]
+  },
+  "Tag endif": {
+    "prefix": "endif",
+    "description": "Control flow tag: endif",
+    "body": [
+      "{% endif %}"
+    ]
+  },
   "Tag unless": {
     "prefix": "unless",
     "description": "Control flow tag: unless",
     "body": [
       "{% unless ${1:condition} %}",
       "\t$2",
+      "{% endunless %}"
+    ]
+  },
+  "Tag endunless": {
+    "prefix": "endunless",
+    "description": "Control flow tag: endunless",
+    "body": [
       "{% endunless %}"
     ]
   },
@@ -53,6 +80,13 @@
       "\t\t$3",
       "\t{% else %}",
       "\t\t$4",
+      "{% endcase %}"
+    ]
+  },
+  "Tag endcase": {
+    "prefix": "endcase",
+    "description": "Control flow tag: endcase",
+    "body": [
       "{% endcase %}"
     ]
   },
@@ -84,6 +118,13 @@
     "body": [
       "{% for ${1:item} in ${2:collection} %}",
       "\t$3",
+      "{% endfor %}"
+    ]
+  },
+  "Tag endfor": {
+    "prefix": "endfor",
+    "description": "Control flow tag: endfor",
+    "body": [
       "{% endfor %}"
     ]
   },
@@ -131,6 +172,13 @@
       "{% endtablerow %}"
     ]
   },
+  "Tag endtablerow": {
+    "prefix": "endtablerow",
+    "description": "Control flow tag: endtablerow",
+    "body": [
+      "{% endtablerow %}"
+    ]
+  },
   "Tag assign": {
     "prefix": "assign",
     "description": "Variable tag: assign",
@@ -159,11 +207,25 @@
       "{% capture ${1:variable} %}$2{% endcapture %}"
     ]
   },
+  "Tag endcapture": {
+    "prefix": "endcapture",
+    "description": "Control flow tag: endcapture",
+    "body": [
+      "{% endcapture %}"
+    ]
+  },
   "Tag raw": {
     "prefix": "raw",
     "description": "Theme tag: raw",
     "body": [
       "{% raw %}$1{% endraw %}"
+    ]
+  },
+  "Tag endraw": {
+    "prefix": "endraw",
+    "description": "Control flow tag: endraw",
+    "body": [
+      "{% endraw %}"
     ]
   },
   "Tag paginate": {
@@ -177,12 +239,26 @@
       "{% endpaginate %}"
     ]
   },
+  "Tag endpaginate": {
+    "prefix": "endpaginate",
+    "description": "Control flow tag: endpaginate",
+    "body": [
+      "{% endpaginate %}"
+    ]
+  },
   "Tag comment": {
     "prefix": "comment",
     "description": "Theme tag: comment",
     "body": [
       "{% comment %}",
       "\t$1",
+      "{% endcomment %}"
+    ]
+  },
+  "Tag endcomment": {
+    "prefix": "endcomment",
+    "description": "Control flow tag: endcomment",
+    "body": [
       "{% endcomment %}"
     ]
   },
@@ -228,6 +304,19 @@
       "\t$2",
       "{%- else -%}",
       "\t$3",
+      "{%- endif -%}"
+    ]
+  },
+  "Tag if elsif, whitespaced": {
+    "prefix": "ifelsif-",
+    "description": "Control flow tag: if elsif, whitespaced",
+    "body": [
+      "{%- if ${1:condition} -%}",
+      "\t$2",
+      "{%- elsif ${3:condition} -%}",
+      "\t$4",
+      "{%- else -%}",
+      "\t$5",
       "{%- endif -%}"
     ]
   },
@@ -582,6 +671,11 @@
     "prefix": "url_param_escape",
     "description": "String filter: url param escape",
     "body": "| url_param_escape"
+  },
+  "Filter where": {
+    "prefix": "where",
+    "description": "Array filter: where",
+    "body": "| where: \"${1:key}\", \"${2:value}\""
   },
   "Filter img url": {
     "prefix": "img_url",

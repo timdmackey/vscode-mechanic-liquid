@@ -404,7 +404,7 @@
     "liquid_inside_tag_highlighting": {
       "patterns": [
         {
-          "begin": "(?<={%-?\\s*action[\\S\\s]*?-?%})",
+          "begin": "(?<={%-?\\s*action[\\s]+?\\['\\\"\\]\\S+\\[\\s\\]*?-?%})",
           "end": "(?={%-?\\s*endaction\\s*?-?%})",
           "patterns": [
             {
