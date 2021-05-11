@@ -296,7 +296,7 @@
           "name": "constant.numeric.mechanic-liquid"
         },
         {
-          "match": "\\b(collection|product|linklist|linklists|order|link|customer|customer_address|customer_group|dispute|line_item|shop|collections|page_title|template|image|blog|blogs|cart|checkout|pages|theme|themes|variant|items|comment|forloop|settings|draft_order|fulfillment|fulfillment_event|inventory_item|inventory_level|location|order_edit|order_transaction|refund)\\b",
+          "match": "\\b(collection|product|linklist|linklists|order|link|customer|customer_address|customer_group|dispute|line_item|shop|collections|page_title|template|image|blog|blogs|cart|checkout|pages|theme|themes|variant|items|comment|forloop|settings|draft_order|fulfillment|fulfillment_event|inventory_item|inventory_level|location|order_edit|order_transaction|refund|metafield)\\b",
           "name": "entity.name.constant.shopify.mechanic-liquid"
         },
         {

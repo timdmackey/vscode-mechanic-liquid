@@ -574,12 +574,12 @@
   "Mechanic filter: push": {
     "prefix": "push",
     "description": "Mechanic filter: push to array",
-    "body": "| push: ${1\"four\", \"five\"}"
+    "body": "| push: ${1:\"four\", \"five\"}"
   },
   "Mechanic filter: unshift": {
     "prefix": "unshift",
     "description": "Mechanic filter: unshift to array",
-    "body": "| unshift: ${1\"zero\", \"one\"}"
+    "body": "| unshift: ${1:\"zero\", \"one\"}"
   },
   "Code Highlighting: GraphQL": {
     "prefix": "language:graphql",
