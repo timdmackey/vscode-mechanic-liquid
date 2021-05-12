@@ -602,9 +602,9 @@
     "description": "String filter: replace first",
     "body": "| replace_first: \"${1:target}\", \"${2:replace}\""
   },
-  "Filter slice": {
+  "Filter slice (array/string)": {
     "prefix": "slice",
-    "description": "String filter: slice",
+    "description": "String filter: slice an array or a string",
     "body": "| slice: ${1:0}, ${2:5}"
   },
   "Filter slice single character": {

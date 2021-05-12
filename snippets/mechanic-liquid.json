@@ -78,6 +78,11 @@
       "{% endaction %}$0"
     ]
   },
+  "Mechanic filter: except": {
+    "prefix": "except",
+    "description": "Mechanic filter: return hash elemets except those listed",
+    "body": "| except: ${1:\"bar\", \"baz\"}"
+  },
   "Mechanic tag: email": {
     "prefix": "email",
     "description": "Mechanic action: email",
@@ -515,6 +520,11 @@
     "prefix": "sample",
     "description": "Mechanic filter: sample",
     "body": "| sample${1:: ${2:2}}"
+  },
+  "Mechanic filter: slice (hash)": {
+    "prefix": "slice",
+    "description": "Mechanic filter: slice a hash",
+    "body": "| slice: ${1:\"bar\", \"baz\"}"
   },
   "Mechanic filter: shopify": {
     "prefix": "shopify",

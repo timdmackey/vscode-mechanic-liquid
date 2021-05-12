@@ -2,3 +2,4 @@
 /.gitignore.*
 /update.sh
 /publish.sh
+/dev/
