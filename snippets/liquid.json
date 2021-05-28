@@ -250,9 +250,7 @@
     "prefix": "comment",
     "description": "Theme tag: comment",
     "body": [
-      "{% comment %}",
-      "\t$1",
-      "{% endcomment %}"
+      "{% comment %}$0{% endcomment %}"
     ]
   },
   "Tag endcomment": {
@@ -266,9 +264,7 @@
     "prefix": "comment-",
     "description": "Comment tag: comment, whitespaced",
     "body": [
-      "{%- comment -%}",
-      "\t$1",
-      "{%- endcomment -%}"
+      "{%- comment -%}$0{%- endcomment -%}"
     ]
   },
   "Tag if, whitespaced": {

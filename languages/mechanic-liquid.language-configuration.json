@@ -1,6 +1,6 @@
 {
   "comments": {
-    "lineComment": "//",
+    // "lineComment": "//",
     // "blockComment": ["/*", "*/"],
     "blockComment": ["{% comment %}", "{% endcomment %}"]
   },
@@ -45,6 +45,14 @@
       "close": " "
     },
     {
+      "open": "comment %} ",
+      "close": " "
+    },
+    {
+      "open": "comment -%} ",
+      "close": " "
+    },
+    {
       "open": "\"",
       "close": "\"",
       "notIn": [
@@ -69,6 +77,7 @@
       ]
     }
   ],
+  "autoCloseBefore": "{",
   "surroundingPairs": [
     ["{", "}"],
     ["[", "]"],
@@ -111,6 +120,20 @@
       "action": {
         "indent": "none",
         "appendText": "* "
+      }
+    },
+    {
+      "beforeText": "{%-?\\s*comment\\s*-?%}(?!{%-?\\s*endcomment\\s*-?%})",
+      "afterText": "{%-?\\s*endcomment\\s*-?%}",
+      "action": {
+        "indent": "indentOutdent",
+      }
+    },
+    {
+      "beforeText": "{%-?\\s*comment\\s*-?%}(?!{%-?\\s*endcomment\\s*-?%})",
+      "afterText": "(?!{%-?\\s*endcomment\\s*-?%}).*",
+      "action": {
+        "indent": "indent"
       }
     }
   ]
